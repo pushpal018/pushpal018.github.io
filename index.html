@@ -38,7 +38,7 @@
     .btn:hover { transform: translateY(-2px); border-color: var(--accent); }
     .btn.primary { background: var(--accent); color: #091127; border-color: var(--accent); }
     .profile-card { padding: 28px; border: 1px solid var(--line); border-radius: 26px; background: linear-gradient(145deg, rgba(23,34,58,.95), rgba(18,26,46,.85)); box-shadow: 0 28px 70px rgba(0,0,0,.22); }
-    .avatar { width: 88px; height: 88px; display: grid; place-items: center; border-radius: 24px; color: #091127; font-size: 1.8rem; font-weight: 900; background: linear-gradient(135deg, var(--accent2), var(--accent)); }
+    .avatar { width: 112px; height: 112px; display: block; border-radius: 26px; object-fit: cover; object-position: center 28%; border: 2px solid rgba(255,255,255,.16); box-shadow: 0 8px 28px rgba(0,0,0,.22); }
     .profile-card h2 { margin: 18px 0 4px; font-size: 1.3rem; }
     .profile-card p { margin: 0; color: var(--muted); }
     .mini-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
@@ -55,8 +55,17 @@
     .iconbox { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: var(--panel2); color: var(--accent2); font-size: 1.15rem; font-weight: 900; }
     .project-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .placeholder { color: #f2d38a; font-size: .75rem; border: 1px solid rgba(242,211,138,.28); border-radius: 999px; padding: 3px 8px; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .project-card { overflow: hidden; }
+    .project-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: -2px 0 18px; }
+    .project-gallery a { display: block; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #080d19; }
+    .project-gallery img { display: block; width: 100%; height: 190px; object-fit: cover; object-position: top center; transition: transform .2s ease; }
+    .project-gallery a:hover img { transform: scale(1.035); }
+    .project-status { display: inline-flex; align-items: center; gap: 6px; color: #d8e3f7; background: rgba(105,224,194,.08); border: 1px solid rgba(105,224,194,.2); border-radius: 999px; padding: 4px 9px; font-size: .74rem; }
+    .project-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); }
     .project-links { display: flex; gap: 15px; margin-top: 17px; font-size: .88rem; font-weight: 700; }
     .textlink { color: var(--accent); }
+    @media (max-width: 800px) { .project-grid { grid-template-columns: 1fr; } .project-gallery img { height: clamp(160px, 32vw, 230px); } }
     .stack-group { margin-top: 16px; }
     .stack-group strong { display: block; margin-bottom: 10px; }
     .stack-tags { display: flex; flex-wrap: wrap; gap: 9px; }
@@ -91,7 +100,7 @@
         </div>
       </div>
       <aside class="profile-card" aria-label="Developer summary">
-        <div class="avatar" aria-hidden="true">PP</div>
+        <img class="avatar" src="profile-photo.webp" alt="Portrait of Pushpal Paul">
         <h2>Pushpal Paul</h2>
         <p>Flutter & Native Android Developer</p>
         <div class="mini-tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Java</span><span class="tag">Kotlin</span><span class="tag">REST APIs</span></div>
@@ -119,25 +128,32 @@
 
     <section id="projects">
       <div class="wrap">
-        <div class="section-head"><div class="kicker">Selected work</div><h2 class="section-title">Featured projects</h2><p class="section-copy">Replace these sample cards with your real public repositories and add screenshots when available.</p></div>
-        <div class="grid">
-          <article class="card">
-            <div class="project-top"><div class="iconbox">F</div><span class="placeholder">Customize</span></div>
-            <h3>Flutter Mobile App</h3><p>Add a short description of a Flutter app you built, the problem it solves, and the main features.</p>
-            <div class="mini-tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">REST API</span></div>
-            <div class="project-links"><a class="textlink" href="https://github.com/pushpal018?tab=repositories">Add repository ↗</a></div>
+        <div class="section-head"><div class="kicker">Selected work</div><h2 class="section-title">Featured projects</h2><p class="section-copy">Selected client work showcasing mobile UI, property management, scheduling, and automation. Source code remains private to respect client confidentiality.</p></div>
+        <div class="project-grid">
+          <article class="card project-card">
+            <div class="project-gallery" aria-label="Bodie app screenshots">
+              <a href="assets/projects/bodie-dashboard.webp" target="_blank" rel="noreferrer" aria-label="Open Bodie dashboard screenshot"><img src="assets/projects/bodie-dashboard.webp" alt="Bodie smart home management dashboard" loading="lazy"></a>
+              <a href="assets/projects/bodie-properties.webp" target="_blank" rel="noreferrer" aria-label="Open Bodie properties screenshot"><img src="assets/projects/bodie-properties.webp" alt="Bodie property tracking screen with private details obscured" loading="lazy"></a>
+              <a href="assets/projects/bodie-contractors.webp" target="_blank" rel="noreferrer" aria-label="Open Bodie contractors screenshot"><img src="assets/projects/bodie-contractors.webp" alt="Bodie contractor management screen with example details obscured" loading="lazy"></a>
+            </div>
+            <div class="project-top"><div class="iconbox">B</div><span class="project-status">Private client project</span></div>
+            <h3>Bodie — Smart Home Management</h3>
+            <p>A property management app that brings property records, expenses, documents, warranties, reminders, and contractor details into one mobile experience.</p>
+            <div class="mini-tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">REST API</span><span class="tag">Mobile UI</span></div>
+            <div class="project-links"><span class="textlink">Client project · Source code private</span></div>
           </article>
-          <article class="card">
-            <div class="project-top"><div class="iconbox">K</div><span class="placeholder">Customize</span></div>
-            <h3>Native Android App</h3><p>Showcase an Android project built with Kotlin or Java. Mention its standout functionality.</p>
-            <div class="mini-tags"><span class="tag">Kotlin / Java</span><span class="tag">Android SDK</span></div>
-            <div class="project-links"><a class="textlink" href="https://github.com/pushpal018?tab=repositories">Add repository ↗</a></div>
-          </article>
-          <article class="card">
-            <div class="project-top"><div class="iconbox">↗</div><span class="placeholder">Customize</span></div>
-            <h3>API-Integrated App</h3><p>Feature an app with authentication, backend integration, data handling, or another technical challenge.</p>
-            <div class="mini-tags"><span class="tag">Mobile</span><span class="tag">API</span><span class="tag">JSON</span></div>
-            <div class="project-links"><a class="textlink" href="https://github.com/pushpal018?tab=repositories">Add repository ↗</a></div>
+
+          <article class="card project-card">
+            <div class="project-gallery" aria-label="GH Scheduler screenshots">
+              <a href="assets/projects/gh-scheduler-home.webp" target="_blank" rel="noreferrer" aria-label="Open GH Scheduler home screenshot"><img src="assets/projects/gh-scheduler-home.webp" alt="GH Scheduler automation settings screen" loading="lazy"></a>
+              <a href="assets/projects/gh-scheduler-time-slots.webp" target="_blank" rel="noreferrer" aria-label="Open GH Scheduler time slots screenshot"><img src="assets/projects/gh-scheduler-time-slots.webp" alt="GH Scheduler preferred time slot selection screen" loading="lazy"></a>
+              <a href="assets/projects/gh-scheduler-subscription.webp" target="_blank" rel="noreferrer" aria-label="Open GH Scheduler subscription screenshot"><img src="assets/projects/gh-scheduler-subscription.webp" alt="GH Scheduler subscription plan screen" loading="lazy"></a>
+            </div>
+            <div class="project-top"><div class="iconbox">GH</div><span class="project-status">Private client project</span></div>
+            <h3>GH Scheduler — Scheduling Automation</h3>
+            <p>A scheduling automation app for Grubhub for Drivers, allowing users to configure preferred time slots, scheduling intervals, and notifications around their booking preferences.</p>
+            <div class="mini-tags"><span class="tag">Mobile App</span><span class="tag">Automation</span><span class="tag">Scheduling</span><span class="tag">Notifications</span></div>
+            <div class="project-links"><span class="textlink">Client project · Source code private</span></div>
           </article>
         </div>
       </div>
