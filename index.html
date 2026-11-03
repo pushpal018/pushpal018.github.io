@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Pushpal Paul — Mobile App Developer specializing in Flutter and Native Android with Java and Kotlin.">
+  <title>Pushpal Paul | Mobile App Developer</title>
+  <style>
+    :root {
+      --bg: #0b1020; --panel: #121a2e; --panel2: #17223a; --text: #eef3ff;
+      --muted: #a7b3ca; --line: rgba(173,190,220,.16); --accent: #7c9cff;
+      --accent2: #69e0c2; --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: radial-gradient(ellipse at 80% 0%, rgba(75,106,190,.18), transparent 38%), var(--bg);
+      color: var(--text); font: 16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent2); outline-offset: 4px; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    header { position: sticky; top: 0; z-index: 5; backdrop-filter: blur(16px); background: rgba(11,16,32,.78); border-bottom: 1px solid var(--line); }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.1rem; }
+    .brand span { color: var(--accent2); }
+    .navlinks { display: flex; gap: 22px; color: var(--muted); font-size: .93rem; }
+    .navlinks a:hover, .textlink:hover { color: var(--accent2); }
+    .hero { padding: 92px 0 78px; display: grid; grid-template-columns: 1.45fr .75fr; align-items: center; gap: 54px; }
+    .eyebrow { display: inline-flex; gap: 9px; align-items: center; color: var(--accent2); font-weight: 700; font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent2); box-shadow: 0 0 16px var(--accent2); }
+    h1 { font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.06; letter-spacing: -.065em; margin: 18px 0; }
+    h1 span { color: var(--accent); }
+    .lead { max-width: 650px; color: var(--muted); font-size: 1.12rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 11px 17px; border-radius: 12px; font-weight: 750; border: 1px solid var(--line); transition: transform .18s, border-color .18s; }
+    .btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .btn.primary { background: var(--accent); color: #091127; border-color: var(--accent); }
+    .profile-card { padding: 28px; border: 1px solid var(--line); border-radius: 26px; background: linear-gradient(145deg, rgba(23,34,58,.95), rgba(18,26,46,.85)); box-shadow: 0 28px 70px rgba(0,0,0,.22); }
+    .avatar { width: 88px; height: 88px; display: grid; place-items: center; border-radius: 24px; color: #091127; font-size: 1.8rem; font-weight: 900; background: linear-gradient(135deg, var(--accent2), var(--accent)); }
+    .profile-card h2 { margin: 18px 0 4px; font-size: 1.3rem; }
+    .profile-card p { margin: 0; color: var(--muted); }
+    .mini-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .tag { border: 1px solid var(--line); background: rgba(255,255,255,.035); color: #dce5f8; padding: 5px 10px; border-radius: 999px; font-size: .82rem; }
+    section { padding: 48px 0; }
+    .section-head { margin-bottom: 25px; }
+    .kicker { color: var(--accent2); text-transform: uppercase; font-size: .78rem; font-weight: 800; letter-spacing: .14em; }
+    h2.section-title { margin: 5px 0 0; font-size: clamp(1.8rem, 3vw, 2.4rem); letter-spacing: -.045em; }
+    .section-copy { color: var(--muted); max-width: 760px; margin-top: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { border: 1px solid var(--line); background: rgba(18,26,46,.76); padding: 22px; border-radius: 18px; }
+    .card h3 { margin: 10px 0 7px; font-size: 1.08rem; }
+    .card p { color: var(--muted); margin: 0; font-size: .94rem; }
+    .iconbox { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: var(--panel2); color: var(--accent2); font-size: 1.15rem; font-weight: 900; }
+    .project-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .placeholder { color: #f2d38a; font-size: .75rem; border: 1px solid rgba(242,211,138,.28); border-radius: 999px; padding: 3px 8px; }
+    .project-links { display: flex; gap: 15px; margin-top: 17px; font-size: .88rem; font-weight: 700; }
+    .textlink { color: var(--accent); }
+    .stack-group { margin-top: 16px; }
+    .stack-group strong { display: block; margin-bottom: 10px; }
+    .stack-tags { display: flex; flex-wrap: wrap; gap: 9px; }
+    .stack-tags span { border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; background: rgba(255,255,255,.025); color: #dce5f8; font-size: .9rem; }
+    .contact { border: 1px solid var(--line); border-radius: 24px; padding: clamp(24px, 5vw, 42px); background: linear-gradient(135deg, rgba(124,156,255,.12), rgba(105,224,194,.06)); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .contact p { color: var(--muted); max-width: 600px; margin-bottom: 0; }
+    footer { padding: 30px 0 42px; color: var(--muted); font-size: .88rem; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); margin-top: 45px; }
+    @media (max-width: 800px) { .hero { grid-template-columns: 1fr; padding-top: 64px; gap: 30px; } .profile-card { max-width: 460px; } .grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .wrap { width: min(100% - 28px, var(--max)); } .navlinks { gap: 12px; font-size: .82rem; } .navlinks a:nth-child(2) { display: none; } .hero { padding: 50px 0 34px; } section { padding: 34px 0; } .grid { grid-template-columns: 1fr; } .contact { align-items: flex-start; flex-direction: column; } footer { flex-direction: column; gap: 6px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#home">Pushpal<span>.</span></a>
+      <div class="navlinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap hero" id="home">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Mobile App Developer</div>
+        <h1>Hi, I'm Pushpal Paul.<br><span>I build mobile apps.</span></h1>
+        <p class="lead">I develop mobile experiences with Flutter and Native Android, using Dart, Java, and Kotlin to build clean, reliable, and user-friendly applications.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore projects ↓</a>
+          <a class="btn" href="https://github.com/pushpal018" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a class="btn" href="#contact">Contact me</a>
+        </div>
+      </div>
+      <aside class="profile-card" aria-label="Developer summary">
+        <div class="avatar" aria-hidden="true">PP</div>
+        <h2>Pushpal Paul</h2>
+        <p>Flutter & Native Android Developer</p>
+        <div class="mini-tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Java</span><span class="tag">Kotlin</span><span class="tag">REST APIs</span></div>
+      </aside>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">A little about me</div><h2 class="section-title">Building thoughtful mobile experiences.</h2></div>
+        <p class="section-copy">I'm a mobile developer interested in creating maintainable applications with polished interfaces and dependable functionality. My work spans cross-platform development with Flutter and native Android development with Java and Kotlin. I also work with API integration, debugging, and app delivery workflows.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">What I work with</div><h2 class="section-title">Skills & tools</h2></div>
+        <div class="grid">
+          <article class="card"><div class="iconbox">F</div><h3>Flutter Development</h3><p>Cross-platform UI, reusable widgets, responsive layouts, and app integrations.</p></article>
+          <article class="card"><div class="iconbox">A</div><h3>Native Android</h3><p>Android application development with Java, Kotlin, and Android SDK.</p></article>
+          <article class="card"><div class="iconbox">{ }</div><h3>API & Tooling</h3><p>REST APIs, JSON, Git, GitHub, debugging, and mobile release workflows.</p></article>
+        </div>
+        <div class="stack-group"><strong>Technology stack</strong><div class="stack-tags"><span>Dart</span><span>Flutter</span><span>Java</span><span>Kotlin</span><span>Android SDK</span><span>REST API</span><span>JSON</span><span>Git</span><span>GitHub</span><span>Android Studio</span><span>Xcode</span><span>Postman</span></div></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Selected work</div><h2 class="section-title">Featured projects</h2><p class="section-copy">Replace these sample cards with your real public repositories and add screenshots when available.</p></div>
+        <div class="grid">
+          <article class="card">
+            <div class="project-top"><div class="iconbox">F</div><span class="placeholder">Customize</span></div>
+            <h3>Flutter Mobile App</h3><p>Add a short description of a Flutter app you built, the problem it solves, and the main features.</p>
+            <div class="mini-tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">REST API</span></div>
+            <div class="project-links"><a class="textlink" href="https://github.com/pushpal018?tab=repositories">Add repository ↗</a></div>
+          </article>
+          <article class="card">
+            <div class="project-top"><div class="iconbox">K</div><span class="placeholder">Customize</span></div>
+            <h3>Native Android App</h3><p>Showcase an Android project built with Kotlin or Java. Mention its standout functionality.</p>
+            <div class="mini-tags"><span class="tag">Kotlin / Java</span><span class="tag">Android SDK</span></div>
+            <div class="project-links"><a class="textlink" href="https://github.com/pushpal018?tab=repositories">Add repository ↗</a></div>
+          </article>
+          <article class="card">
+            <div class="project-top"><div class="iconbox">↗</div><span class="placeholder">Customize</span></div>
+            <h3>API-Integrated App</h3><p>Feature an app with authentication, backend integration, data handling, or another technical challenge.</p>
+            <div class="mini-tags"><span class="tag">Mobile</span><span class="tag">API</span><span class="tag">JSON</span></div>
+            <div class="project-links"><a class="textlink" href="https://github.com/pushpal018?tab=repositories">Add repository ↗</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <div><div class="kicker">Let's connect</div><h2 class="section-title">Have a mobile app idea?</h2><p>Explore my code on GitHub or connect with me to discuss mobile development opportunities.</p></div>
+          <div class="actions"><a class="btn primary" href="https://github.com/pushpal018" target="_blank" rel="noreferrer">Visit GitHub ↗</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap"><span>© <span id="year"></span> Pushpal Paul</span><span>Built with HTML & CSS · Hosted with GitHub Pages</span></footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
